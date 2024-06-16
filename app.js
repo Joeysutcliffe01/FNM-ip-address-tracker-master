@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     inputField.value = userIP;
 
     if (userIP) {
-      const apiURL = `https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_ViW6fGDC51XUGz2jiX5qCGeve15md&ipAddress=${userIP}`;
+      const apiURL = `https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_tzf6DvqrktF5rH3V0FXuCmqyhJTtu&ipAddress=${userIP}`;
       const data = await getIPAddressData(apiURL);
 
       if (data) {
@@ -62,10 +62,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   function updateLocationData(data) {
     const { ip, isp, location: { lat, lng: long, region, timezone } } = data;
 
-    ipAddressElem.textContent = ip;
-    locationElem.textContent = `${region}, ${lat}, ${long}`;
-    timezoneElem.textContent = timezone;
-    ispElem.textContent = isp;
+    ipAddressElem.textContent = ip ? ip : "No IP address Data";
+    locationElem.textContent = region ? `${region}` : "No region Data";
+    timezoneElem.textContent = timezone ? timezone : "No timezoneData";
+    ispElem.textContent = isp ? isp : "No IPS Data";
 
     const customIcon = L.icon({
       iconUrl: 'images/icon-location.svg', // Path to your custom marker icon
